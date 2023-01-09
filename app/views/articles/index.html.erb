@@ -1,8 +1,20 @@
 
 <h1 class="text-center mt-4">Articles</h1>
 
+<div class="flickr_pagination">
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+  <%= will_paginate @articles, :container => false %>
+</div>
 <div class="container">
   <% @articles.each do |article| %>
     <%= render "article", article: article %>
   <% end %>
+</div>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+  <%= will_paginate @articles, :container => false %>
 </div>

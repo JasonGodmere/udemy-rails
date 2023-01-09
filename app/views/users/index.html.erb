@@ -12,13 +12,15 @@
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
-          <%= user.username %>
+          <%= link_to user.username, user_path(user) %>
         </div>
         <div class="card-body">
           <h5 class="card-title text-success"><%= link_to user.username, user_path(user), class: "text-success" %></h5>
           <p class="card-text">has <%= user.articles.count %> articles</p>
           <%= link_to "View Profile", user_path(user), class: "btn btn-outline-success" %>
+          <% if logged_in? && user == current_user %>
           <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info" %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
